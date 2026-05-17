@@ -22,6 +22,12 @@ conda activate AXIS
 pip install -r requirements.txt
 ```
 
+Due to GitHub's file size limitations, the following files must be downloaded from Zenodo: https://doi.org/10.5281/zenodo.20206011
+
+- AXIS.pth → place it in the models/ folder
+
+- DrugComb_tem_full.csv → place it in the data/DrugComb/ folder
+
 ---
 
 ## 📘 Usage
