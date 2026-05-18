@@ -84,3 +84,5 @@ To train and predict on the complete dataset, follow these steps:
 ### Drug Feature Extraction
 
 - `notebooks/Features/Drug_Feature_Extract.ipynb` – This notebook converts drug SMILES strings into feature vectors for subsequent model training.
+
+![](./Figures/Drug_Feature_Extraction.png)
