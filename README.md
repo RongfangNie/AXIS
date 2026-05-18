@@ -2,13 +2,16 @@
 
 **An Attribution-based Cross-interaction Model for Interpretable Drug Synergy Prediction and Mechanistic Insight**
 
+
 ---
 
 ## 📋 About
 
 We present **AXIS**, an interpretable deep learning framework that integrates chemical language models, self‑supervised omics encoders, and a multi‑source cross‑attention module. AXIS not only predicts drug synergy but also uncovers the underlying biological mechanisms driving the predictions.
 
-![AXIS overview](./AXIS.png)
+![AXIS overview](./Figures/AXIS.png)
+
+
 
 ---
 
@@ -22,15 +25,20 @@ conda activate AXIS
 pip install -r requirements.txt
 ```
 
+
 Due to GitHub's file size limitations, the following files must be downloaded from Zenodo: https://doi.org/10.5281/zenodo.20206011
 
 - AXIS.pth → place it in the models/ folder
 
 - DrugComb_tem_full.csv → place it in the data/DrugComb/ folder
 
+
+
 ---
 
+
 ## 📘 Usage
+
 
 ### Demo Scripts
 
@@ -41,6 +49,9 @@ We provide demo notebooks for quick testing:
 
 > ⚠️ **Note:** The demo data is intended only for workflow illustration. Performance obtained with the demo is **not** representative of the full model.
 
+
+
+
 ### Full Training & Prediction
 
 To train and predict on the complete dataset, follow these steps:
@@ -49,8 +60,20 @@ To train and predict on the complete dataset, follow these steps:
 2. **Training** – Run `notebooks/Train.ipynb`  
 3. **Prediction** – Run `notebooks/Predict.ipynb`
 
+
+
+---
+
 ### Model Interpretability
 
-Visualize how drug substructures contribute to model predictions using SHAP values:
 
-- **`notebooks/Drug_substructure_contribution_maps.ipynb`** – Generates SHAP contribution heatmaps for drug substructures, illustrated with the docetaxel‑tamoxifen‑NCIH838 combination.
+- **`Single_Combination_Contribution_Visualization.ipynb`** – This notebook reproduces the results shown in **Figure 4** of the paper. It generates SHAP contribution heatmaps for drug substructures (illustrated with the docetaxel‑tamoxifen‑NCIH838 combination) and performs enrichment analysis of the top-N genes (by absolute SHAP contribution) across three drug‑related gene sets.
+
+**Drug substructure contribution maps for sorafenib**
+
+![](./Figures/drug.png)
+
+**Validation of top-ranked genes for linsitinib–sorafenib in MELHO identified by AXIS in the TTD (Therapeutic Target Database)**.
+
+![](./Figures/cell_line.png)
+
