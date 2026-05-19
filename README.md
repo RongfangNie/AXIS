@@ -86,3 +86,51 @@ To train and predict on the complete dataset, follow these steps:
 - `notebooks/Features/Drug_Feature_Extract.ipynb` – This notebook converts drug SMILES strings into feature vectors for subsequent model training.
 
 ![](./Figures/Drug_Feature_Extraction.png)
+
+
+---
+
+## Cell line encoder pretrain
+
+Run the following commands in the `./MOCO` folder.
+
+### Environment Setup
+
+```bash
+conda env create -f environment.yml
+conda activate MOCO
+pip install -r requirements.txt
+```
+
+### Multi-omics Data Processing
+
+Depmap data should be downloaded from the official Depmap website and placed in the `./MOCO/data/Depmap` directory.
+
+- **`./MOCO/data_process_Depmap.ipynb`** – Processes and standardizes the omics data.  
+- **`./MOCO/data_process_Depmap_mutation_top_var.ipynb`** – Processes mutation data.  
+- **`./MOCO/performance_Depmap.ipynb`** – Visualizes UMAP projections of the data before and after training.  
+- **`./MOCO/GeneFeatureMOCO_Depmap_ProteinCodingGene.ipynb`** – Demonstrates how to extract omics features using the pre‑trained cell line encoder, using mRNA data as an example.
+
+### Cell line encoder Training
+
+![](./Figures/Supplementary_Figure_1.png)
+
+----
+
+Using mRNA data as an example, run the following command to train the model:
+
+```bash
+cd ./MOCO   # Replace with the actual path to your MOCO folder
+PYTHON=~/miniconda3/envs/MOCO/bin/python   # Path to your Python interpreter in the MOCO environment
+export CUDA_VISIBLE_DEVICES=1,2,3,4        # Specify GPU IDs for training
+
+$PYTHON main.py --arch densenet27 \
+    --dist-url "tcp://localhost:10029" \
+    --outdir "./result/mRNA_protein" \      # Replace with your output path for the chosen omics
+    --file ./data/zscore_train_Depmap_ProteinCodingGene_mRNA.npz \   # Replace with your omics data file
+    --epochs 200 \
+    --num_batches 16 \
+    --schedule 80
+```
+
+---
