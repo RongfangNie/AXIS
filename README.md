@@ -51,7 +51,7 @@ To train and predict on the complete dataset, follow these steps:
 
 ### 2.3. Model Interpretability
 
-- **`Single_Combination_Contribution_Visualization.ipynb`** – This notebook reproduces the results shown in **Figure 4** of the paper. It generates SHAP contribution heatmaps for drug substructures (illustrated with the docetaxel‑tamoxifen‑NCIH838 combination) and performs enrichment analysis of the top‑N genes (by absolute SHAP contribution) across three drug‑related gene sets.
+- **`Single_Combination_Contribution_Visualization.ipynb`** – This notebook reproduces the results shown in **Figure 4** of the paper. It generates SHAP contribution heatmaps for drug substructures (illustrated with the linsitinib–sorafenib in MELHO combination) and performs enrichment analysis of the top‑N genes (by absolute SHAP contribution) across three drug‑related gene sets.
 
 > Drug substructure contribution maps for sorafenib
 
